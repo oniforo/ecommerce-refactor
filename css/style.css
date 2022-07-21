@@ -1,0 +1,244 @@
+body, header, h1, div, a, main, section, ul, li, button, h2, p, aside, form, input, h3 {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    border-color: transparent;
+    font-family: 'Inter', sans-serif;
+    color: #242424;
+}
+
+.container {
+    width: 1650px;
+    display: flex;
+    justify-content: space-between;
+}
+
+header {
+    
+    min-width: 100vw;
+    
+    box-shadow: 0px 4px 30px -10px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+   margin-left: 300px; 
+}
+
+.menu {
+    margin-right: 20px;
+}
+
+main {
+    width: 1390px;
+    display: flex;
+    margin: 52px auto 0 ;
+}
+
+section {
+    
+    width: 968px;
+}
+
+ul {
+    display: flex;
+    width: 968px;
+    flex-wrap: wrap;
+}
+li {
+    width: 27%;
+    height: 408px;
+    border: 2px solid #F5F5F5;
+}
+
+.imgCard{
+    width: 250px;
+}
+
+.card {
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+
+.categoria {
+    background-color: #2E245E;
+    color: white;
+    font-size: 12px;
+    width: 73px;
+    height: 24px;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+h2 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.nomeProduto {
+    margin-left: 15px;
+}
+
+p{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.preco {
+    color: #2E245E;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.linkCard {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+form {
+    width: 347px;
+}
+
+input {
+    background-color: #F5F5F5;
+    width: 246px;
+    height: 52px;
+    text-align: center;
+}
+
+input:focus {
+    background-color: white;
+}
+
+.pesquisa {
+    background-color: #2E245E;
+    color: white;
+    width: 88px;
+    height: 52px;
+    font-size: 16px;
+    margin-left: 8px;
+}
+
+.pesquisa:hover {
+    cursor: pointer;
+}
+
+aside {
+    width: 347px;
+    margin-right: 115px;
+    margin-left: 55px;
+    margin-top: 20px;
+}
+
+.tituloCarrinho {
+    width: 347px;
+    height: 52px;
+    background-color: #37268C;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#corpoCarrinho {
+    width: 347px;
+    height: 264px;
+    background-color: #F5F5F5;
+    overflow-y:scroll;
+}
+
+.listaCarrinho {
+   display: flex;
+    width: 282px;
+    height: 92px;
+}
+
+.imgCarrinho {
+    width: 88px;
+    height: 92px;
+}
+
+.divCarrinho {
+    width: 176px;
+    height: 92px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+h3 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    padding-top: 8px;
+}
+
+.preçoCarrinho {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #2E245E;
+    margin-top: 8px;
+    padding-right: 8px;
+}
+
+.remocao {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.rodapeCarrinho {
+    width: 347px;
+    height: 126px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #292929;
+   
+} 
+
+.quantidadeRodape {
+    height: 24px;
+    width: 347px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-color: transparent;
+    margin-top: 28px;
+}
+
+.totalRodape {
+    height: 24px;
+    width: 347px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-color: transparent;
+    margin-top: 28px;
+}
+
+.pRodape, #valorQuantidade, #precoTotal {
+    color: white;
+}
+
