@@ -1,5 +1,18 @@
 let ulCard = document.querySelector("#ulCard")
+createCard (data)
+
+let products = document.getElementsByClassName("linkCard")
+let ulCarrinho = document.getElementById('corpoCarrinho')
+
 let arrCarrinho = []
+
+for (let product of products) {
+    product.addEventListener("click", event => {
+        adicionarCarrinho(event)
+        atualizarCarrinho(arrCarrinho)    
+    })
+}
+
 function createCard (data) {
     for (let i=0; i<data.length; i++) {
         let liCard = document.createElement('li')
@@ -26,11 +39,6 @@ function createCard (data) {
         ulCard.appendChild(liCard)
         }
 }
-createCard (data)
-
-let btnProdutos = document.getElementsByClassName("linkCard")
-let ulCarrinho = document.getElementById('corpoCarrinho')
-let btnCarrinho = document.getElementsByClassName('remocao')
 
 function adicionarCarrinho(event){
     let btn = event.target
@@ -91,19 +99,6 @@ function removerCarrinho(event) {
     
 }
 
-
-
-for(let i = 0; i< btnProdutos.length; i++){
-let btnComprar = btnProdutos[i]
-btnComprar.addEventListener("click", funcao)
-//btnComprar.addEventListener('click', atualizarCarrinho(arrCarrinho))
-}
-
-function funcao(evento) {
-    adicionarCarrinho(evento)
-    atualizarCarrinho(arrCarrinho)
-}
-
 function atualizarCarrinho (arrCarrinho) {
 
     let precos = document.querySelectorAll('.preçoCarrinho')
@@ -124,6 +119,4 @@ function atualizarCarrinho (arrCarrinho) {
     console.log(soma)
     console.log(arrCarrinho)
 
-   
 }
-
