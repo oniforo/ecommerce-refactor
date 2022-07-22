@@ -10,7 +10,7 @@ let arrCarrinho = []
 for (let product of products) {
     product.addEventListener("click", event => {
         cartAdd(event)
-        atualizarCarrinho(arrCarrinho)    
+        /* atualizarCarrinho()   */  
     })
 }
 
@@ -64,68 +64,39 @@ function cartAdd(event) {
     
     a.innerText = 'Remover Produto'
     a.id = product.id
-    a.addEventListener("click", removerCarrinho)
+    a.addEventListener("click", cartDelete)
 
     div.append(h3, p, a)
     li.append(img, div)
     
     ulCarrinho.appendChild(li)
-    arrCarrinho.push(product)
+    arrCarrinho.push(product.value)
     console.log(arrCarrinho)
+
+    atualizarCarrinho()
 
 }
 
-function removerCarrinho(event) {
-    event.path[2].remove()
-    let btnRemover = event.target
-    console.log(btnRemover.parentNode)
-    console.log(btnRemover.id)
-    arrCarrinho.splice(btnRemover.id, 1)
-    ulCarrinho.innerHTML = ''
-    for (let n=0; n<arrCarrinho.length; n++) {
-        let liNovoCarrinho = document.createElement('li')
-        let imgNovoCarrinho = document.createElement('img')
-        let divNovoCarrinho = document.createElement('div')
-        let h3NovoCarrinho = document.createElement('h3')
-        let pNovoCarrinho = document.createElement('p')
-        let aNovoCarrinho = document.createElement('a')
-        liNovoCarrinho.classList.add('listaCarrinho')
-        imgNovoCarrinho.classList.add('imgCarrinho')
-        divNovoCarrinho.classList.add('divCarrinho')
-        pNovoCarrinho.classList.add('preçoCarrinho')
-        aNovoCarrinho.classList.add('remocao')
-        imgNovoCarrinho.src = arrCarrinho[btnRemover.id-1].img 
-        h3NovoCarrinho.innerText = arrCarrinho[btnRemover.id-1].nameItem
-        pNovoCarrinho.innerText = `R$ ${arrCarrinho[btnRemover.id-1].value}`
-        aNovoCarrinho.innerText = 'Remover Produto'
-        aNovoCarrinho.id = arrCarrinho[btnRemover.id-1].id
-        divNovoCarrinho.append(h3NovoCarrinho, pNovoCarrinho, aNovoCarrinho)
-        liNovoCarrinho.append(imgNovoCarrinho, divNovoCarrinho)
-        ulCarrinho.appendChild(liNovoCarrinho)
-        aNovoCarrinho.addEventListener("click", removerCarrinho)
-        
-    }
-    
+function cartDelete(event) {
+
+    const target = event.target
+    const index = Array.from(ulCarrinho.children).indexOf(target.closest("li"))
+
+    target.closest('li').remove()
+    arrCarrinho.splice(index, 1)
+
+    atualizarCarrinho()
 }
 
-function atualizarCarrinho (arrCarrinho) {
-
-    let precos = document.querySelectorAll('.preçoCarrinho')
-    let soma = 0
-    let quantidade = arrCarrinho.length
-    for (let j=0; j<arrCarrinho.length; j++) {
-        soma += arrCarrinho[j].value
-        
-    }
+function atualizarCarrinho() {
     
-    let valorQuantidade = document.querySelector('#valorQuantidade')
-    let precoTotal = document.querySelector('#precoTotal')
+    const func = (partial, a) => partial + a
+    const soma = arrCarrinho.reduce(func, 0);
 
-    valorQuantidade.innerText = quantidade
-    precoTotal.innerText = `R$ ${soma}`
+    let quant = document.querySelector('#valorQuantidade')
+    let preco = document.querySelector('#precoTotal')
 
-    console.log(quantidade)
-    console.log(soma)
-    console.log(arrCarrinho)
+    quant.innerText = arrCarrinho.length
+    preco.innerText = `R$ ${soma}`
 
 }
