@@ -1,5 +1,6 @@
 let ulCard = document.querySelector("#ulCard")
-createCard (data)
+/* Variable data is loaded from database.js */
+displayProducts(data)
 
 let products = document.getElementsByClassName("linkCard")
 let ulCarrinho = document.getElementById('corpoCarrinho')
@@ -13,31 +14,36 @@ for (let product of products) {
     })
 }
 
-function createCard (data) {
-    for (let i=0; i<data.length; i++) {
-        let liCard = document.createElement('li')
-        let imgCard = document.createElement('img')
-        let buttonCard = document.createElement('button')
-        let h2Card = document.createElement('h2')
-        let pCard = document.createElement('p')
-        let precoCard = document.createElement('p')
-        let linkCard = document.createElement('a')
-        liCard.classList.add('card')
-        imgCard.classList.add('imgCard')
-        buttonCard.classList.add('categoria')
-        h2Card.classList.add('nomeProduto')
-        precoCard.classList.add('preco')
-        linkCard.classList.add('linkCard')
-        imgCard.src = data[i].img
-        buttonCard.innerText = data[i].tag
-        h2Card.innerText = data[i].nameItem
-        pCard.innerText = data[i].description
-        precoCard.innerText = `R$ ${data[i].value}`
-        linkCard.innerText = data[i].addCart
-        linkCard.id = data[i].id
-        liCard.append(imgCard, buttonCard, h2Card, pCard, precoCard, linkCard)
-        ulCard.appendChild(liCard)
-        }
+/* Creates and element with a given class */
+function elementWithClass(element, className) {
+    const elem = document.createElement(element)
+    elem.classList.add(className)
+    return elem
+}
+
+function displayProducts(data) {
+    for (let product of data) {
+        
+        const li = elementWithClass('li', 'card')
+        const img = elementWithClass('img', 'imgCard')
+        const button = elementWithClass('button', 'categoria')
+        const h2 = elementWithClass('h2', 'nomeProduto')
+        const p = elementWithClass('p')
+        const preco = elementWithClass('p', 'preco')
+        const a = elementWithClass('a', 'linkCard')
+
+        img.src = product.img
+        button.innerText = product.tag
+        h2.innerText = product.nameItem
+        p.innerText = product.description
+        preco.innerText = `R$ ${product.value}`
+        a.innerText = product.addCart
+        a.id = product.id
+
+        li.append(img, button, h2, p, preco, a)
+        ulCard.appendChild(li)
+
+    }
 }
 
 function adicionarCarrinho(event){
