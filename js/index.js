@@ -9,7 +9,7 @@ let arrCarrinho = []
 
 for (let product of products) {
     product.addEventListener("click", event => {
-        adicionarCarrinho(event)
+        cartAdd(event)
         atualizarCarrinho(arrCarrinho)    
     })
 }
@@ -46,30 +46,33 @@ function displayProducts(data) {
     }
 }
 
-function adicionarCarrinho(event){
-    let btn = event.target
-    let liCarrinho = document.createElement('li')
-    let imgCarrinho = document.createElement('img')
-    let divCarrinho = document.createElement('div')
-    let h3Carrinho = document.createElement('h3')
-    let pCarrinho = document.createElement('p')
-    let aCarrinho = document.createElement('a')
-    liCarrinho.classList.add('listaCarrinho')
-    imgCarrinho.classList.add('imgCarrinho')
-    divCarrinho.classList.add('divCarrinho')
-    pCarrinho.classList.add('preçoCarrinho')
-    aCarrinho.classList.add('remocao')
-    imgCarrinho.src = data[btn.id].img 
-    h3Carrinho.innerText = data[btn.id].nameItem
-    pCarrinho.innerText = `R$ ${data[btn.id].value}`
-    aCarrinho.innerText = 'Remover Produto'
-    aCarrinho.id = data[btn.id].id
-    divCarrinho.append(h3Carrinho, pCarrinho, aCarrinho)
-    liCarrinho.append(imgCarrinho, divCarrinho)
-    ulCarrinho.appendChild(liCarrinho)
-    aCarrinho.addEventListener("click", removerCarrinho)
-    arrCarrinho.push(data[btn.id])
+function cartAdd(event) {
+
+    const target = event.target
+    const product = data[target.id]
+
+    const li = elementWithClass('li', 'listaCarrinho')
+    const img = elementWithClass('img', 'imgCarrinho')
+    const div = elementWithClass('div', 'divCarrinho')
+    const h3 = elementWithClass('h3')
+    const p = elementWithClass('p', 'preçoCarrinho')
+    const a = elementWithClass('a', 'remocao')
+
+    img.src = product.img 
+    h3.innerText = product.nameItem
+    p.innerText = `R$ ${product.value}`
+    
+    a.innerText = 'Remover Produto'
+    a.id = product.id
+    a.addEventListener("click", removerCarrinho)
+
+    div.append(h3, p, a)
+    li.append(img, div)
+    
+    ulCarrinho.appendChild(li)
+    arrCarrinho.push(product)
     console.log(arrCarrinho)
+
 }
 
 function removerCarrinho(event) {
